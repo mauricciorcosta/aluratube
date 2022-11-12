@@ -3,20 +3,19 @@ import styled from "styled-components";
 import { CSSReset } from "../src/components/CSSReset";
 import Menu from "../src/components/Menu";
 import { StyledTimeline } from "../src/components/Timeline";
+import { StyledHeader } from "../src/components/Header";
+import { StyledFav } from "../src/components/Favorites";
 
 function HomePage() {
-    const estiloHome = { 
-        // backgroundColor: "red" 
-    };
 
-    // console.log(config.playlists);
     return (
         <>
             <CSSReset />
-            <div style={estiloHome}>
+            <div>
                 <Menu />
                 <Header />
                 <Timeline playlists={config.playlists} />
+                <Favorites favorites={config.favorites} />
             </div>
         </>
     );
@@ -24,29 +23,14 @@ function HomePage() {
 
 export default HomePage
 
-const StyledHeader = styled.div`
-    img {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        margin-top: 50px;
-    }
-
-    .user-info {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        padding: 16px 32px;
-        gap: 16px;
-    }
-`;
-
 function Header() {
     return (
         <StyledHeader>
-            {/* <img src="banner" /> */}
+            <div className="crop">
+                <img className="banner" src={config.banner} />
+            </div>
             <section className="user-info">
-                <img src={`https://github.com/${config.github}.png`} />
+                <img className="user-avatar" src={`https://github.com/${config.github}.png`} />
                 <div>
                     <h2>
                         {config.name}
@@ -61,31 +45,60 @@ function Header() {
 }
 
 function Timeline(props) {
-    // console.log("Dentro do componente", props);
     const playlistNames = Object.keys(props.playlists);
 
     return (
         <StyledTimeline>
             {playlistNames.map((playlistNames) => {
                 const videos = props.playlists[playlistNames];
-                // console.log(videos);
                 return (
                     <section>
                         <h2>{playlistNames}</h2>
                         <div>
-                           {videos.map((video) => {
-                            return (
-                                <a href={video.url}>
-                                    <img src={video.thumb} />
-                                    <span>
-                                        {video.title}
-                                    </span>
-                                </a>
-                            )})}
+                            {videos.map((video) => {
+                                return (
+                                    <a href={video.url}>
+                                        <img src={video.thumb} />
+                                        <span>
+                                            {video.title}
+                                        </span>
+                                    </a>
+                                )
+                            })}
                         </div>
                     </section>
                 )
             })}
         </StyledTimeline>
+    )
+}
+
+function Favorites(props) {
+    const favoritos = Object.keys(props.favorites);
+    console.log(favoritos);
+    return (
+        <StyledFav>
+            <section>
+                <h2>AluraTubes Favoritos</h2>
+                <div>
+                    {favoritos.map((fav) => {
+                        const pessoas = props.favorites[fav];
+                        console.log("fav", pessoas);
+                        return (
+                            <div className="fav-cards">
+                                {(
+                                    <a href={`https://github.com/${pessoas.avatar}`}>
+                                        <img className="favorites-avatar" src={`https://github.com/${pessoas.avatar}.png`} />
+                                        <span>
+                                            {pessoas.name}
+                                        </span>
+                                    </a>
+                                )}
+                            </div>
+                        )
+                    })}
+                </div>
+            </section>
+        </StyledFav>
     )
 }
