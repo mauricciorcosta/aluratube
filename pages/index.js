@@ -86,14 +86,14 @@ function Favorites(props) {
     // console.log(favoritos);
     return (
         <StyledFav>
-            <section>
+            <section key={favoritos}>
                 <h2>AluraTubes Favoritos</h2>
                 <div>
                     {favoritos.map((fav) => {
                         const pessoas = props.favorites[fav];
                         // console.log("fav", pessoas);
                         return (
-                            <div className="fav-cards">
+                            <div key={pessoas.name} className="fav-cards">
                                 {(
                                     <a href={`https://github.com/${pessoas.avatar}`}>
                                         <img className="favorites-avatar" src={`https://github.com/${pessoas.avatar}.png`} />
