@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import config from "../config.json";
+import Menu from "../src/components/Menu"
 import { CSSReset } from "../src/components/CSSReset";
-import Menu from "../src/components/Menu/Menu";
 import { StyledTimeline } from "../src/components/Timeline";
 import { StyledHeader } from "../src/components/Header";
 import { StyledFav } from "../src/components/Favorites";
@@ -18,7 +18,7 @@ function HomePage() {
                 <Menu theme={theme} setTheme={setTheme} valorDoFiltro={valorDoFiltro} setValorDoFiltro={setValorDoFiltro} />
                 <Header theme={theme} setTheme={setTheme} />
                 <Timeline searchValue={valorDoFiltro} playlists={config.playlists} />
-                <Favorites favorites={config.favorites} />
+                {/* <Favorites favorites={config.favorites} /> */}
             </div>
         </>
     );
@@ -81,32 +81,32 @@ function Timeline({searchValue, ...props}) {
     )
 }
 
-function Favorites(props) {
-    const favoritos = Object.keys(props.favorites);
-    // console.log(favoritos);
-    return (
-        <StyledFav>
-            <section>
-                <h2>AluraTubes Favoritos</h2>
-                <div>
-                    {favoritos.map((fav) => {
-                        const pessoas = props.favorites[fav];
-                        // console.log("fav", pessoas);
-                        return (
-                            <div className="fav-cards">
-                                {(
-                                    <a href={`https://github.com/${pessoas.avatar}`}>
-                                        <img className="favorites-avatar" src={`https://github.com/${pessoas.avatar}.png`} />
-                                        <span>
-                                            {pessoas.name}
-                                        </span>
-                                    </a>
-                                )}
-                            </div>
-                        )
-                    })}
-                </div>
-            </section>
-        </StyledFav>
-    )
-}
+// function Favorites(props) {
+//     const favoritos = Object.keys(props.favorites);
+//     // console.log(favoritos);
+//     return (
+//         <StyledFav>
+//             <section>
+//                 <h2>AluraTubes Favoritos</h2>
+//                 <div>
+//                     {favoritos.map((fav) => {
+//                         const pessoas = props.favorites[fav];
+//                         // console.log("fav", pessoas);
+//                         return (
+//                             <div className="fav-cards">
+//                                 {(
+//                                     <a href={`https://github.com/${pessoas.avatar}`}>
+//                                         <img className="favorites-avatar" src={`https://github.com/${pessoas.avatar}.png`} />
+//                                         <span>
+//                                             {pessoas.name}
+//                                         </span>
+//                                     </a>
+//                                 )}
+//                             </div>
+//                         )
+//                     })}
+//                 </div>
+//             </section>
+//         </StyledFav>
+//     )
+// }
