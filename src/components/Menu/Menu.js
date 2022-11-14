@@ -1,6 +1,6 @@
-import { useEffect } from "react";
 import styled from "styled-components";
-import Search from "./components/search";
+import DarkModeSwitch from "./components/DarkModeSwitch";
+import Search from "./components/Search";
 
 const StyledMenu = styled.header`
   display: flex;
@@ -14,12 +14,6 @@ const StyledMenu = styled.header`
   gap: 16px;
   position: fixed;
   width: 100%;
-  .theme-mode {
-    background-color: red;
-    border: none;
-    width: 50px;
-    height: 26px;
-  }
   .logo {
     width: 100%;
     max-width: 80px;
@@ -32,26 +26,14 @@ const StyledMenu = styled.header`
   }
 `;
 
-export default function Menu({theme, setTheme, valorDoFiltro, setValorDoFiltro}) {
-  const toggleTheme = () => {
-    if (theme === "light") {
-      setTheme("dark");
-      console.log("dark");
-    } else {
-      setTheme("light");
-      console.log("light");
-    }
-  };
-  useEffect(() => {
-    document.body.className = theme;
-  }, [theme]);
+export default function Menu({ valorDoFiltro, setValorDoFiltro }) {
   return (
     <StyledMenu>
       <div>
         <Logo />
       </div>
-        <Search valorDoFiltro={valorDoFiltro} setValorDoFiltro={setValorDoFiltro} />
-        <button className="theme-mode" onClick={toggleTheme}> </button>
+      <Search valorDoFiltro={valorDoFiltro} setValorDoFiltro={setValorDoFiltro} />
+      <DarkModeSwitch />
     </StyledMenu>
   );
 }

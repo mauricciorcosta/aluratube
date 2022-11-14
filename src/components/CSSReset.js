@@ -9,6 +9,8 @@ export const CSSReset = createGlobalStyle`
   }
   body {
     font-family: sans-serif;
+    background-color: ${({ theme }) => theme.backgroundBase};
+    color: ${({ theme }) => theme.textColorBase};
   }
   /* NextJS */
   html {
@@ -25,15 +27,6 @@ export const CSSReset = createGlobalStyle`
     flex: 1;
   }
   /* Globals */
-  .dark {
-    background-color: #181818;
-    color: #ffffff;
-  }
-  .light {
-    background-color: #ffffff;
-    color: #000;
-  }
-
   button,
   a {
     text-decoration: none;
