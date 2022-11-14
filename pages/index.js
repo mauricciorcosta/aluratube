@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import config from "../config.json";
 import { CSSReset } from "../src/components/CSSReset";
-import Menu from "../src/components/Menu/Menu";
+import Menu from "../src/components/Menu/Index";
 import { StyledTimeline } from "../src/components/Timeline";
 import { StyledHeader } from "../src/components/Header";
 import { StyledFav } from "../src/components/Favorites";
