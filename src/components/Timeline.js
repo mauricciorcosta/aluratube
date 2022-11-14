@@ -36,16 +36,12 @@ section {
     ::-webkit-scrollbar {
       height: 7px;
       width: 7px;
-      /* background-color: ${({ theme }) => theme.backgroundLevel1 || "#FFFFFF"};
-      border: 1px solid ${({ theme }) => theme.borderBase || "#e5e5e5"}; */
       background-color: transparent;
       border: transparent;
     }
     ::-webkit-scrollbar-track {
-      /* background-color: ${({ theme }) => theme.backgroundLevel1 || "#FFFFFF"}; */
       background-color: transparent;
       border: transparent;
-      /* border: 1px solid ${({ theme }) => theme.borderBase || "#e5e5e5"}; */
     }
     ::-webkit-scrollbar-thumb {
       background-color: ${({ theme }) => theme.backgroundLevel1 || "#FFFFFF"};
