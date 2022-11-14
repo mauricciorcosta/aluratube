@@ -5,7 +5,6 @@ flex: 1;
 width: 100%;
 padding: 16px;
 overflow: hidden;
-
 section {
     padding: 16px;
 }
@@ -27,7 +26,7 @@ section>div {
     align-items: center;
     gap: 8px;
     text-decoration: none;
-    color: #000000;
+    color: ${({ theme }) => theme.textColorBase || "#222222"};
 }
 
 a img{
